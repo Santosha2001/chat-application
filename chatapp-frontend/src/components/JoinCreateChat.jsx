@@ -32,18 +32,16 @@ const JoinCreateChat = () => {
 
   async function joinChat() {
     if (validateForm()) {
-      //join chat
-
       try {
         const room = await joinChatApi(detail.roomId);
-        toast.success("joined..");
+        toast.success("Joined..");
         setCurrentUser(detail.userName);
         setRoomId(room.roomId);
         setConnected(true);
         navigate("/chat");
       } catch (error) {
-        if (error.status == 400) {
-          toast.error(error.response.data);
+        if (error.message === "Room not found") {
+          toast.error("Room not found");
         } else {
           toast.error("Error in joining room");
         }
@@ -72,7 +70,7 @@ const JoinCreateChat = () => {
       } catch (error) {
         console.log(error);
         if (error.status == 400) {
-          toast.error("Room  already exists !!");
+          toast.error("Room already exists !!");
         } else {
           toast("Error in creating room");
         }
@@ -90,7 +88,8 @@ const JoinCreateChat = () => {
         <h1 className="text-2xl font-semibold text-center ">
           Join Room / Create Room ..
         </h1>
-        {/* name div */}
+
+        {/* name */}
         <div className="">
           <label htmlFor="name" className="block font-medium mb-2">
             Your name
@@ -106,7 +105,7 @@ const JoinCreateChat = () => {
           />
         </div>
 
-        {/* room id div */}
+        {/* room id */}
         <div className="">
           <label htmlFor="name" className="block font-medium mb-2">
             Room ID / New Room ID

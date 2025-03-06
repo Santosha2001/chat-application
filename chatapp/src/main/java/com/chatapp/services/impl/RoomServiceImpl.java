@@ -31,7 +31,11 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public Room getRoomByRoomId(String roomId) {
-        return roomRepository.findByRoomId(roomId);
+        Room room = roomRepository.findByRoomId(roomId);
+        if (room == null) {
+            throw new RuntimeException("Room not found!");
+        }
+        return room;
     }
 
     /*

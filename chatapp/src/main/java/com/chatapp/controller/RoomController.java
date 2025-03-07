@@ -29,17 +29,6 @@ public class RoomController {
         }
     }
 
-    /*
-    @GetMapping("/{roomId}")
-    public ResponseEntity<?> joinRoom(@PathVariable String roomId) {
-        try {
-            Room room = roomService.getRoomByRoomId(roomId);
-            return ResponseEntity.ok(room);
-        } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
-    */
     @GetMapping("/{roomId}")
     public ResponseEntity<?> joinRoom(@PathVariable String roomId) {
         try {

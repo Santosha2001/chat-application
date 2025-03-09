@@ -41,7 +41,7 @@ const ChatPage = () => {
         const messages = await getMessagess(roomId);
         // console.log(messages);
         setMessages(messages);
-      } catch (error) {}
+      } catch (error) { }
     }
     if (connected) {
       loadMessages();
@@ -96,7 +96,7 @@ const ChatPage = () => {
 
   const sendMessage = async () => {
     if (stompClient && connected && input.trim()) {
-      console.log(input);
+      // console.log(input);
 
       const message = {
         sender: currentUser,
@@ -159,14 +159,12 @@ const ChatPage = () => {
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`flex ${
-              message.sender === currentUser ? "justify-end" : "justify-start"
-            } `}
+            className={`flex ${message.sender === currentUser ? "justify-end" : "justify-start"
+              } `}
           >
             <div
-              className={`my-2 ${
-                message.sender === currentUser ? "bg-green-800" : "bg-gray-800"
-              } p-2 max-w-xs rounded`}
+              className={`my-2 ${message.sender === currentUser ? "bg-green-800" : "bg-gray-800"
+                } p-2 max-w-xs rounded`}
             >
               <div className="flex flex-row gap-2">
                 <img
